@@ -1,3 +1,11 @@
+---
+title: "第3讲 Agent 基础知识"
+nav_order: 3
+permalink: /03-agent-basics/
+date: 2026-09-15
+layout: default
+---
+
 # 《新媒体交互设计》——第3讲 Agent基础知识
 
 ***

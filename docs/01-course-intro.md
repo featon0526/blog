@@ -1,4 +1,10 @@
-# 《新媒体交互设计》——第1讲 课程介绍
+---
+title: "第1讲 课程介绍"
+nav_order: 1
+permalink: /01-course-intro/
+date: 2026-09-01
+layout: default
+---
 
 ***
 

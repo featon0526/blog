@@ -1,3 +1,11 @@
+---
+title: "第2讲 音视频制作"
+nav_order: 2
+permalink: /02-audio-video/
+date: 2026-09-08
+layout: default
+---
+
 # 《新媒体交互设计》——第2讲 音视频制作
 
 ***
