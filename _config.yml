@@ -10,13 +10,24 @@ description: >-
   AI 视频剪辑、WorkBuddy 使用指南、案例讲解与互联网发展史等。
 baseurl: "/blog"          # 项目页子路径（仓库名 blog）
 url: "https://featon0526.github.io"
+author: featon            # 作者（用于 SEO）
+footer_content: "Copyright © 2026 featon · 新媒体交互设计讲义"
+social:
+  github: featon0526
 
 # ---- 主题 ----
 theme: just-the-docs
 
 # ---- 侧边栏 / 搜索 / 配色 ----
 search_enabled: true
-color_scheme: light
+
+# 配色方案：导航栏右上角出现切换按钮，可在浅色/深色间切换（localStorage 记忆）
+color_scheme: default
+color_schemes:
+  default:
+    name: "浅色"
+  dark:
+    name: "深色"
 
 # ---- 文档集合（讲义）----
 # 文件放在 docs/ 目录，按 nav_order 在侧边栏排序
@@ -32,7 +43,15 @@ aux_links:
   "课程仓库（GitHub）":
     - "https://github.com/featon0526/blog"
 
+# ---- RSS（jekyll-feed）----
+feed:
+  path: feed.xml
+  posts_limit: 100
+  collections:
+    - docs
+
 # ---- 插件 ----
 plugins:
   - jekyll-seo-tag
   - jekyll-include-cache
+  - jekyll-feed
