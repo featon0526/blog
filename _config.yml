@@ -33,3 +33,4 @@ aux_links:
 # ---- 插件 ----
 plugins:
   - jekyll-seo-tag
+  - jekyll-include-cache
