@@ -1,8 +1,14 @@
 {%- comment -%}
   顶栏工具区：「浅色 / 深色」切换按钮 + RSS 订阅入口。
   由主题的 components/header.html 自动 include（位置：搜索框与右上角辅助链接之间）。
-  订阅源说明：本站内容是 docs 集合（非 posts），jekyll-feed 会把它输出到
-  /feed/docs.xml；/feed.xml 只装文章，本站为空，故此处指向 docs 源。
+
+  切换逻辑自包含：
+    直接改写主样式表 <link> 的 href 实现配色切换
+    （just-the-docs-default.css / -light.css 为浅色，just-the-docs-dark.css 为深色，
+     三份线上均已生成可用），并用 data-theme 属性控制图标显隐。
+    不依赖 jtd.*，避免主题 JS 版本/时序差异导致切换失效。
+  订阅源说明：本站内容是 docs 集合（非 posts），jekyll-feed 输出到 /feed/docs.xml；
+  /feed.xml 只装文章，本站为空，故此处指向 docs 源。
 {%- endcomment -%}
 <div class="site-toolbar">
   <button id="theme-toggle" class="theme-toggle" type="button"
@@ -41,35 +47,33 @@
     var btn = document.getElementById('theme-toggle');
     if (!btn) { return; }
 
-    function currentTheme() {
-      return root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    function swapStylesheet(theme) {
+      var sheet = document.querySelector('link[rel="stylesheet"]');
+      if (!sheet) { return; }
+      var href = sheet.getAttribute('href') || '';
+      var next = href.replace(/just-the-docs-[^/]+\.css$/, 'just-the-docs-' + theme + '.css');
+      if (next && next !== href) { sheet.setAttribute('href', next); }
     }
 
     function applyTheme(theme) {
-      // jtd.getTheme() 从 <link> 的 href 反推当前配色名（可能是 default / light / dark）
-      var linked = (window.jtd && typeof window.jtd.getTheme === 'function')
-        ? window.jtd.getTheme()
-        : null;
-      var alreadyLinked = (linked === theme) || (theme === 'light' && linked === 'default');
-
-      if (!alreadyLinked && window.jtd && typeof window.jtd.setTheme === 'function') {
-        window.jtd.setTheme(theme);
-      }
-
+      swapStylesheet(theme);
       root.setAttribute('data-theme', theme);
-      btn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
-      var text = theme === 'dark' ? '切换到浅色主题' : '切换到深色主题';
-      btn.setAttribute('title', text);
-      btn.setAttribute('aria-label', text);
-
       try { window.localStorage.setItem(KEY, theme); } catch (e) {}
+      var label = (theme === 'dark') ? '切换到浅色主题' : '切换到深色主题';
+      btn.setAttribute('aria-pressed', (theme === 'dark') ? 'true' : 'false');
+      btn.setAttribute('title', label);
+      btn.setAttribute('aria-label', label);
     }
 
-    // 进入页面时先与 <head> 中恢复的状态对齐
-    applyTheme(currentTheme());
+    function isDark() {
+      return root.getAttribute('data-theme') === 'dark';
+    }
+
+    // 与 head_custom.html 已恢复的状态对齐（确保样式表与 data-theme 一致）
+    applyTheme(isDark() ? 'dark' : 'light');
 
     btn.addEventListener('click', function () {
-      applyTheme(currentTheme() === 'dark' ? 'light' : 'dark');
+      applyTheme(isDark() ? 'light' : 'dark');
     });
   })();
 </script>
