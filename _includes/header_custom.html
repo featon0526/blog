@@ -1,0 +1,75 @@
+{%- comment -%}
+  顶栏工具区：「浅色 / 深色」切换按钮 + RSS 订阅入口。
+  由主题的 components/header.html 自动 include（位置：搜索框与右上角辅助链接之间）。
+  订阅源说明：本站内容是 docs 集合（非 posts），jekyll-feed 会把它输出到
+  /feed/docs.xml；/feed.xml 只装文章，本站为空，故此处指向 docs 源。
+{%- endcomment -%}
+<div class="site-toolbar">
+  <button id="theme-toggle" class="theme-toggle" type="button"
+          aria-label="切换到深色主题" title="切换到深色主题" aria-pressed="false">
+    <svg class="theme-toggle-icon theme-toggle-icon--moon" width="18" height="18" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+    <svg class="theme-toggle-icon theme-toggle-icon--sun" width="18" height="18" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </button>
+  <a class="theme-toggle rss-link" href="{{ '/feed/docs.xml' | relative_url }}"
+     title="订阅本站（RSS）" aria-label="订阅本站（RSS）">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M4 11a9 9 0 0 1 9 9"></path>
+      <path d="M4 4a16 16 0 0 1 16 16"></path>
+      <circle cx="5" cy="19" r="1"></circle>
+    </svg>
+  </a>
+</div>
+<script>
+  (function () {
+    var KEY = 'jtd-theme-pref';
+    var root = document.documentElement;
+    var btn = document.getElementById('theme-toggle');
+    if (!btn) { return; }
+
+    function currentTheme() {
+      return root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    }
+
+    function applyTheme(theme) {
+      // jtd.getTheme() 从 <link> 的 href 反推当前配色名（可能是 default / light / dark）
+      var linked = (window.jtd && typeof window.jtd.getTheme === 'function')
+        ? window.jtd.getTheme()
+        : null;
+      var alreadyLinked = (linked === theme) || (theme === 'light' && linked === 'default');
+
+      if (!alreadyLinked && window.jtd && typeof window.jtd.setTheme === 'function') {
+        window.jtd.setTheme(theme);
+      }
+
+      root.setAttribute('data-theme', theme);
+      btn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+      var text = theme === 'dark' ? '切换到浅色主题' : '切换到深色主题';
+      btn.setAttribute('title', text);
+      btn.setAttribute('aria-label', text);
+
+      try { window.localStorage.setItem(KEY, theme); } catch (e) {}
+    }
+
+    // 进入页面时先与 <head> 中恢复的状态对齐
+    applyTheme(currentTheme());
+
+    btn.addEventListener('click', function () {
+      applyTheme(currentTheme() === 'dark' ? 'light' : 'dark');
+    });
+  })();
+</script>

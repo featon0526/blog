@@ -1,0 +1,28 @@
+{%- comment -%}
+  在 <head> 末尾尽早恢复读者上次选择的配色，避免深色偏好的读者看到"闪白"。
+  说明：just-the-docs 只输出一份默认样式表（just-the-docs-default.css），
+  切换靠 jtd.setTheme() 改写 <link> 的 href 指向 just-the-docs-dark.css / -light.css；
+  该函数由 /assets/js/just-the-docs.js 提供，在 head.html 中先于本文件加载。
+  本文件由主题的 head.html 自动 include，无需在 _config.yml 里挂载。
+{%- endcomment -%}
+<script>
+  (function () {
+    var KEY = 'jtd-theme-pref';
+    var theme = 'light';
+    try {
+      var saved = window.localStorage.getItem(KEY);
+      if (saved === 'dark' || saved === 'light') {
+        theme = saved;
+      }
+    } catch (e) {
+      /* localStorage 不可用（隐私模式等）时静默回退到浅色 */
+    }
+
+    document.documentElement.setAttribute('data-theme', theme);
+
+    // 浅色本就是默认加载的样式表，无需替换，避免多余请求
+    if (theme !== 'light' && window.jtd && typeof window.jtd.setTheme === 'function') {
+      window.jtd.setTheme(theme);
+    }
+  })();
+</script>

@@ -1,0 +1,50 @@
+// ============================================================
+// 站点自定义样式
+// 主题会在所有模块之后自动 @import "./custom/custom"，
+// 无需在 _config.yml 里做任何挂载配置。
+// ============================================================
+
+// ---- 顶栏工具区：主题切换按钮 + RSS 入口（见 _includes/header_custom.html）----
+.site-toolbar {
+  display: flex;
+  align-items: center;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem; // 与右侧辅助链接留出间距
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  margin-left: 0.35rem;
+  padding: 0;
+  border: 1px solid $border-color;
+  border-radius: 50%;
+  background-color: transparent;
+  color: $body-text-color;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+
+  &:hover,
+  &:focus {
+    border-color: $link-color;
+    color: $link-color;
+    text-decoration: none;
+  }
+
+  .theme-toggle-icon {
+    display: none;
+  }
+}
+
+// 浅色模式显示「月亮」（点击切到深色）；深色模式显示「太阳」（点击切回浅色）
+html[data-theme="light"] .theme-toggle-icon--moon {
+  display: block;
+}
+
+html[data-theme="dark"] .theme-toggle-icon--sun {
+  display: block;
+}

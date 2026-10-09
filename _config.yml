@@ -21,13 +21,11 @@ theme: just-the-docs
 # ---- 侧边栏 / 搜索 / 配色 ----
 search_enabled: true
 
-# 配色方案：导航栏右上角出现切换按钮，可在浅色/深色间切换（localStorage 记忆）
-color_scheme: default
-color_schemes:
-  default:
-    name: "浅色"
-  dark:
-    name: "深色"
+# 配色方案：只支持内置的 "light"（默认）与 "dark"，或你在 _sass/color_schemes/
+# 下自建的方案名。写成不存在的名字（如 default）会让 Sass 执行
+# @import "./color_schemes/default" 而找不到文件，导致整个站点构建失败。
+# 顶栏的浅色/深色切换按钮由 _includes/header_custom.html 提供（调用 jtd.setTheme）。
+color_scheme: light
 
 # ---- 文档集合（讲义）----
 # 文件放在 docs/ 目录，按 nav_order 在侧边栏排序
