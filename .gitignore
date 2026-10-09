@@ -1,0 +1,23 @@
+# ---- 个人/隐私数据：绝不入库 ----
+.workbuddy/
+.archive/
+
+# ---- Jekyll 构建产物与缓存 ----
+_site/
+.jekyll-cache/
+.jekyll-metadata
+Gemfile.lock
+
+# ---- Ruby / 本地环境 ----
+.bundle/
+vendor/bundle/
+*.gem
+
+# ---- 系统/编辑垃圾 ----
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# ---- 迁移脚本（不入库） ----
+_migrate.py
