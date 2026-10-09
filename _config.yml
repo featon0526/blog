@@ -38,8 +38,8 @@ collections:
 
 # ---- 右上角辅助链接 ----
 aux_links:
-  "课程仓库（GitHub）":
-    - "https://github.com/featon0526/blog"
+  "课程作品展示":
+    - "https://nwu-newmedia-2026.pages.dev/"
 
 # ---- RSS（jekyll-feed）----
 feed:
