@@ -1,6 +1,7 @@
 ---
-title: "第5讲 WorkBuddy使用指南"
+title: "第5讲 WorkBuddy 使用指南"
 nav_order: 5
+permalink: /05-workbuddy-guide/
 date: 2026-09-29
 layout: default
 ---

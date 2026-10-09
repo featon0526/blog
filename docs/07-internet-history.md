@@ -1,6 +1,7 @@
 ---
 title: "第7讲 互联网发展史"
 nav_order: 7
+permalink: /07-internet-history/
 date: 2026-10-10
 layout: default
 ---

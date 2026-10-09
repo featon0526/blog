@@ -23,7 +23,9 @@ color_scheme: light
 collections:
   docs:
     output: true
-    permalink: /:path/    # 生成干净 URL：/blog/01-course-intro/
+    # 注意：实测此处（集合级）的 permalink 不生效，会被忽略并回退成 /docs/xx.html。
+    # 各讲的真实 URL 由每篇 front matter 的 permalink 决定（见 docs/*.md，如 /01-course-intro/）。
+    permalink: /:path/
 
 # ---- 右上角辅助链接 ----
 aux_links:

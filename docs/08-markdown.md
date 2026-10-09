@@ -1,6 +1,7 @@
 ---
 title: "第8讲 Markdown"
 nav_order: 8
+permalink: /08-markdown/
 date: 2026-10-10
 layout: default
 ---

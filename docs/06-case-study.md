@@ -1,6 +1,7 @@
 ---
 title: "第6讲 案例讲解"
 nav_order: 6
+permalink: /06-case-study/
 date: 2026-09-29
 layout: default
 ---

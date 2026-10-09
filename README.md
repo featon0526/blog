@@ -53,13 +53,22 @@ bundle exec jekyll serve --baseurl "/blog"
    ---
    title: "第N讲 标题"
    nav_order: N
+   permalink: /NN-topic-slug/     # ← 决定线上地址，务必写，且与文件名一致
    date: 2026-01-01
    layout: default
    ---
    ```
 
-2. 配图放入 `assets/img/`，正文中用 `![]({{ site.baseurl }}/assets/img/xxx.webp)` 引用。
-3. 提交并推送，`nav_order` 决定侧边栏顺序。
+2. 在 `index.md` 的「课程目录」里补一条：`[第N讲 标题]({{ site.baseurl }}/NN-topic-slug/)`。
+3. 配图放入 `assets/img/`，正文中用 `![]({{ site.baseurl }}/assets/img/xxx.webp)` 引用。
+4. 提交并推送，`nav_order` 决定侧边栏顺序。
+
+> **URL 约定**：每讲的线上地址由该篇 front matter 里的 `permalink` 决定，例如
+> `permalink: /01-course-intro/` → `https://featon0526.github.io/blog/01-course-intro/`。
+> 文件名、`permalink`、`index.md` 里的链接三者要保持一致。
+>
+> ⚠️ 仅在 `_config.yml` 的 `collections.docs` 里写 `permalink` 是**不生效**的
+> （实测该集合级模板会被 Jekyll 忽略、回退成默认的 `/docs/xx.html`），必须逐篇写在 front matter 里。
 
 ## 已知事项
 

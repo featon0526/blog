@@ -1,6 +1,7 @@
 ---
-title: "第4讲 Ai视频剪辑 & Skills"
+title: "第4讲 AI 视频剪辑 & Skills"
 nav_order: 4
+permalink: /04-ai-video-skills/
 date: 2026-09-22
 layout: default
 ---
