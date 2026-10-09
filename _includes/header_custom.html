@@ -69,7 +69,7 @@
       return root.getAttribute('data-theme') === 'dark';
     }
 
-    // 与 head_custom.html 已恢复的状态对齐（确保样式表与 data-theme 一致）
+    /* 与 head_custom.html 已恢复的状态对齐（确保样式表与 data-theme 一致） */
     applyTheme(isDark() ? 'dark' : 'light');
 
     btn.addEventListener('click', function () {
