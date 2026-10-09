@@ -19,5 +19,6 @@ Thumbs.db
 *.swp
 *~
 
-# ---- 迁移脚本（不入库） ----
+# ---- 迁移/修补脚本（不入库） ----
 _migrate.py
+_fix_permalinks.py
