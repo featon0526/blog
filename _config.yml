@@ -6,8 +6,8 @@
 # ---- 站点基本信息 ----
 title: 新媒体交互设计 · 课程讲义
 description: >-
-  《新媒体交互设计》课程全套讲义（第1讲—第8讲），涵盖交互设计基础、Agent 基础、
-  AI 视频剪辑、WorkBuddy 使用指南、案例讲解与互联网发展史等。
+  《新媒体交互设计》课程全套讲义（第1讲—第10讲），涵盖交互设计基础、Agent 基础、
+  AI 视频剪辑、WorkBuddy 使用指南、案例讲解、互联网发展史、Markdown、GitHub 与个人灵感库等。
 baseurl: "/blog"          # 项目页子路径（仓库名 blog）
 url: "https://featon0526.github.io"
 author: featon            # 作者（用于 SEO）
