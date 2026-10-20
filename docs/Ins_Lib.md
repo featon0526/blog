@@ -1,11 +1,9 @@
 ---
-​---
 title: "第10讲 个人灵感库"
 nav_order: 10
-permalink: /Ins_Lib/     # ← 决定线上地址，务必写，且与文件名一致
+permalink: /10-ins-lib/
 date: 2026-10-20
 layout: default
-​---
 ---
 
 # Ins_Lib：个人灵感库
