@@ -21,6 +21,8 @@ title: 新媒体交互设计 · 课程讲义
 9. [第8讲 Markdown]({{ site.baseurl }}/08-markdown/)
 10. [第9讲 GitHub 使用]({{ site.baseurl }}/09-github-study/)
 11. [第10讲 个人灵感库 Ins_Lib]({{ site.baseurl }}/10-ins-lib/)
+12. [第11讲 HTML入门]({{ site.baseurl }}/09-HTML/)
+13. [案例2 3D Prompt]({{ site.baseurl }}/Deepseek_v4.1_flash_prompt/)
 
 ---
 
